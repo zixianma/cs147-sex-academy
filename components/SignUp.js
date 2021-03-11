@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         margin: 10,
 
-        resizeMode: 'contain',
+        // resizeMode: 'contain',
     },
     title: {
         fontSize: 36,

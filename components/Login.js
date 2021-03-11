@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     },
     textIcon: {
         flex: 1,
-        resizeMode: 'contain',
+        // resizeMode: 'contain',
         alignSelf: 'center',
     },
     textView: {

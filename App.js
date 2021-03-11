@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Home from './components/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Explore from './components/Explore';
 
 
 export default function App() {
@@ -14,8 +15,8 @@ export default function App() {
       {/* <Home></Home> */}
 
       {/* <Login></Login> */}
-      <SignUp></SignUp>
-      
+      {/* <SignUp></SignUp> */}
+      <Explore ></Explore>
     </View>
   );
 }
