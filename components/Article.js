@@ -10,35 +10,37 @@ const DATA = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'How to talk to teenagers about porn',
-      imageUrl: '../assets/home.png',
+      subtitle: 'Fighting unrealistic & unhealthy ideas about sex',
       author: 'Alisa Red',
       likes: 2021, 
       source: "Child Mind Insstitute"
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'How porn changes the way teens think about sex',
+      title: 'I don’t know how to talk to my partnewr about sex',
+      subtitle: 'Find advice on  how to talk to your partner about sex.',
       imageUrl: '../assets/home.png',
-      author: 'Emily F. Rothman',
+      author: 'Unknown author',
       likes: 2021,
-      source: "TEDMED"
+      source: "Child Mind Insstitute"
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Losing my v card, masturbation, and other...',
+      title: 'I Love You, but I Hate the Way You Watch TV',
+      subtitle: 'Deciding on the correct way to consume streaming media is a rich source of conflict.',
       imageUrl: '../assets/home.png',
-      author: 'Ashley aka bestdressed',
+      author: 'Sophia Benoit',
       likes: 2021,
-      source: "Youtube"
+      source: "GQ wellness"
     },
     {
-        id: '58694a0f-3da1-471f-bd96-145571e29d73',
-        title: 'Getting this party started',
-        imageUrl: '../assets/home.png',
-        author: 'The Dildorks',
-        likes: 2021,
-        source: "Podcast"
-      },
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28bc',
+      title: 'How to talk to teenagers about porn',
+      subtitle: 'Fighting unrealistic & unhealthy ideas about sex',
+      author: 'Alisa Red',
+      likes: 2021, 
+      source: "Child Mind Insstitute"
+    }
   ];
 
 
@@ -46,15 +48,16 @@ class Explore extends Component {
 
   render() {
 
-    const Item = ({ title, imageUrl, author, source, likes}) => (
+    const Item = ({ title, subtitle, imageUrl, author, source, likes}) => (
         // <View style={styles.item}>
         //   <Text style={styles.title}>{title}</Text>
         // </View>
-        <Card containerStyle={{borderWidth: 0}}>
-            <Card.Image style={{borderRadius: 10}} source={require('../assets/cmi.png')}>
-        </Card.Image>
-        <Card.Divider/>
+        <Card containerStyle={{borderWidth: 2, borderColor: 'black', borderRadius: 10, backgroundColor: "#FFF3F8"}}>
+            {/* <Card.Image style={{borderRadius: 10}} source={require('../assets/cmi.png')}>
+        </Card.Image> */}
         <Card.Title style={{textAlign: "left"}}>{title}</Card.Title>
+        <Card.FeaturedSubtitle style={{textAlign: "left"}}><Text>{subtitle}</Text></Card.FeaturedSubtitle>
+        <Card.Divider/>
         <View style={{flex: 1, flexDirection: "row", alignItems: "center"}}> 
         <Text style={{flex: 3}}>
             {source? author + ' @ ' + source: author}
@@ -69,7 +72,8 @@ class Explore extends Component {
       );
 
     const renderItem = ({ item }) => (
-        <Item title={item.title} imageUrl={item.imageUrl} author={item.author} source={item.source} likes={item.likes}/>
+        <Item title={item.title} subtitle={item.subtitle} imageUrl={item.imageUrl} 
+        author={item.author} source={item.source} likes={item.likes}/>
       );    
 
     return (
@@ -77,7 +81,7 @@ class Explore extends Component {
           <SafeAreaProvider>
         <TopBar />
         <RecommendBar />
-<FlatList
+<FlatList 
         data={DATA}
         renderItem={renderItem}
         keyExtractor={item => item.id}

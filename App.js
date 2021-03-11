@@ -5,6 +5,8 @@ import Home from './components/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Explore from './components/Explore';
+import Article from './components/Article';
+import Search from './components/Search';
 
 
 export default function App() {
@@ -16,7 +18,10 @@ export default function App() {
 
       {/* <Login></Login> */}
       {/* <SignUp></SignUp> */}
-      <Explore ></Explore>
+      {/* <Explore ></Explore> */}
+      {/* {<Article></Article>} */}
+      {<Search></Search>}
+
     </View>
   );
 }

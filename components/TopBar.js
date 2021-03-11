@@ -16,12 +16,13 @@ this.setState({ search });
     const { search } = this.state;
     return (
       <View style={styles.container}>
-        <View style={{flex: 6}}><SearchBar platform="android"
-        placeholder="Type Here..."
+        <View style={{flex: 6}}>
+          <SearchBar platform="android"
+        placeholder="Search..."
         onChangeText={this.updateSearch}
         value={search}
         style={styles.search}/></View>
-        <View style={{flex: 1}}><Image style={styles.tinyLogo} source={require('../assets/logo.png')}/></View>
+        <View style={{flex: 1}}><Image style={styles.tinyLogo} source={require('../assets/avatar.png')}/></View>
       </View>
     );
   }
@@ -39,12 +40,16 @@ const styles = StyleSheet.create({
     paddingRight: 20
   },
   tinyLogo: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50
   }, 
   search: {
       width: 200,
-      flex: 6
+      flex: 5,
+      borderColor: 'grey',
+      borderWidth: 2,
+      borderRadius: 10,
+      paddingLeft: 10
   },
 });
 

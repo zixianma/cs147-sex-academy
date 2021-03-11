@@ -7,7 +7,7 @@ class BottomBar extends Component {
     constructor () {
         super()
         this.state = {
-          selectedIndex: 2
+          selectedIndex: 0
         }
         this.updateIndex = this.updateIndex.bind(this)
         this.windowWidth = Dimensions.get('window').width;

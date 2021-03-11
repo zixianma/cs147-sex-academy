@@ -25,7 +25,7 @@ class BottomBar extends Component {
         const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }, { element: component4 }]
         const { selectedIndex } = this.state
         return (
-          <ButtonGroup
+          <ButtonGroup 
             onPress={this.updateIndex}
             selectedIndex={selectedIndex}
             buttons={buttons}
