@@ -7,21 +7,19 @@ import SignUp from './components/SignUp';
 import Explore from './components/Explore';
 import Article from './components/Article';
 import Search from './components/Search';
+import InterestedTopics from './components/InterestedTopics'
 
 
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" /> */}
       {/* <Home></Home> */}
 
       {/* <Login></Login> */}
-      {/* <SignUp></SignUp> */}
       {/* <Explore ></Explore> */}
-      {/* {<Article></Article>} */}
-      {<Search></Search>}
-
+      {/* <Article></Article> */}
+      {/* <Search></Search> */}
+      <InterestedTopics></InterestedTopics>
     </View>
   );
 }

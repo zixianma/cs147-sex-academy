@@ -22,7 +22,7 @@ export default function Home() {
                         Sex Academy
                 </Text>
                     <View>
-                        <Text style={styles.sub}>Personalized Sex Ed with stories</Text>
+                        <Text style={styles.sub}>Personalized Sex Ed with Stories</Text>
                     </View>
                 </View>
             </View>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     sub: {
         fontWeight: '400',
         fontSize: 24,
-        color: '#fff'
-
+        color: '#fff',
+        textAlign: 'center'
     }
 });

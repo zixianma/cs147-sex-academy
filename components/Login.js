@@ -35,7 +35,7 @@ export default function Login() {
                     <View style={styles.textIcon}>
 
                         <Icon name="user"
-                            size="25"
+                            size={25}
                         />
                     </View>
                     <TextInput
@@ -50,7 +50,7 @@ export default function Login() {
                 <View style={styles.textView}>
                     <View style={styles.textIcon} >
                         <Icon name="lock"
-                            size="25"
+                            size={25}
                         />
                     </View>
                     <TextInput
