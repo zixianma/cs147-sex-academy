@@ -18,7 +18,6 @@ export default function BackButton(props) {
             <Pressable onPress={() => { props.callback() }}>
                 {/* <View style={styles.header}> */}
                     <Icon name="arrow-back-circle-outline"
-                        size="50"
                         style={styles.pic}
                     />
                 {/* </View> */}
@@ -37,7 +36,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         margin: 10,
-        resizeMode: 'contain',
+        fontSize: 55
     },
    
 });

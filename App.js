@@ -8,6 +8,8 @@ import Explore from './components/Explore';
 import Article from './components/Article';
 import Search from './components/Search';
 import InterestedTopics from './components/InterestedTopics'
+import TopBarSC from './components/TopBarSC'
+import SingleContent from './components/SingleContent';
 
 
 export default function App() {
@@ -19,7 +21,8 @@ export default function App() {
       {/* <Explore ></Explore> */}
       {/* <Article></Article> */}
       {/* <Search></Search> */}
-      <InterestedTopics></InterestedTopics>
+      {/* <InterestedTopics></InterestedTopics> */}
+      <SingleContent></SingleContent>
     </View>
   );
 }
