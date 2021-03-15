@@ -20,7 +20,7 @@ const BottomBarSC = () => {
       placeholder="comment"
       keyboardType="numeric"
     />
-  <Icon style={{}} name='send' type='feather' color='black'/></View>
+  <Icon style={{justifyContent: "flex-end"}} name='send' type='feather' color='black'/></View>
 
     
                   <View style={{flex: 2, flexDirection: "row", justifyContent: "space-around"}} >
@@ -30,16 +30,32 @@ const BottomBarSC = () => {
                   <Icon style={{}} name='share' type='feather' color='black'/> */}
                   <Pressable onPress={() => onPressLike(!liked)}>
               {liked?
-           <Image source={require('../assets/heart-red.png')}/>
+               
+                 <View style={{flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
+                     <Image source={require('../assets/heart-red.png')}/>
+                     <Text>2022</Text>
+                 </View>
           :
-          <Image source={require('../assets/heart-white.png')}/>
+          <View style={{flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
+                     <Image source={require('../assets/heart-white.png')}/>
+                     <Text>2021</Text>
+                 </View>
+          
               }
             </Pressable>
             <Pressable onPress={() => onPressStar(!starred)}>
               {starred?
-           <Image source={require('../assets/star-yellow.png')}/>
+               <View style={{flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
+               <Image source={require('../assets/star-yellow.png')}/>
+               <Text>99</Text>
+           </View>
+          
           :
-          <Image source={require('../assets/star-white.png')}/>
+          <View style={{flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
+                     <Image source={require('../assets/star-white.png')}/>
+                     <Text>98</Text>
+                 </View>
+         
               }
             </Pressable>
             <Pressable onPress={() => onPressLike(!liked)}>
@@ -83,11 +99,12 @@ backbutton: {
 },
 input: {
   height: 40,
+  width: Metrics.screenWidth * 0.3,
   margin: 12,
   padding: 10, 
   borderWidth: 1,
   borderRadius: 20,
-  backgroundColor: 'white',
+  backgroundColor: 'white'
 },
 icon: {
   flex: 1
