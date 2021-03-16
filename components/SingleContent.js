@@ -5,6 +5,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import BottomBarSC from "../components/BottomBarSC";
 import TopBarSC from "../components/TopBarSC";
 import RecommendBar from "../components/RecommendBar"
+import metrics from "../Themes/Metrics";
 
 const DATA = [
     {
@@ -19,16 +20,82 @@ const DATA = [
     }
   ];
 
+  const COMMENTS = [
+    {
+      id: '1',
+      user: 'Macro',
+      avatarId: 0,
+      likes: 147, 
+      content: "I like this! Wish to see more of this kind of content.",
+      date: "March 16, 2021"
+    },
+    {
+      id: '2',
+      user: 'Louise',
+      avatarId: 1,
+      likes: 147, 
+      content: "I like this! Wish to see more of this kind of content.",
+      date: "March 16, 2021"
+    },
+    {
+      id: '3',
+      user: 'Andrew',
+      avatarId: 2,
+      likes: 147, 
+      content: "I like this! Wish to see more of this kind of content.",
+      date: "March 16, 2021"
+    }
+  ];
 
 class SingleContent extends Component {
     state = {
         followed: false,
+        liked: false,
+        comments: [
+          {
+            id: '1',
+            user: 'Macro',
+            avatarId: 1,
+            likes: 147, 
+            content: "I like this! Wish to see more of this kind of content.",
+            date: "March 16, 2021",
+            liked: false
+          },
+          {
+            id: '2',
+            user: 'Louise',
+            avatarId: 2,
+            likes: 147, 
+            content: "I like this! Wish to see more of this kind of content.",
+            date: "March 16, 2021",
+            liked: false
+          },
+          {
+            id: '3',
+            user: 'Andrew',
+            avatarId: 3,
+            likes: 147, 
+            content: "I like this! Wish to see more of this kind of content.",
+            date: "March 16, 2021",
+            liked: false
+          }
+        ]
     }
     // this.updateIndex = this.updateIndex.bind(this)
     // this.windowWidth = Dimensions.get('window').width;
     updateFollow = () => {
     this.setState({followed: !this.state.followed});
     };
+
+    updateLike = (avatarId) => {
+      console.log("avatar ID:", avatarId);
+      console.log("comments:", this.state.comments[avatarId]);
+      let newComments = this.state.comments;
+      newComments[avatarId].likes += this.state.comments[avatarId].liked? -1: 1;
+      newComments[avatarId].liked = !this.state.comments.liked;
+      // this.setState({liked: !this.state.liked});
+      // this.setState({comments: newComments});
+      };
 
   render() {
 
@@ -73,6 +140,43 @@ class SingleContent extends Component {
         />
       );    
 
+const Comment =  ({ user, avatarId, like, content, date}) => (
+  <View style={styles.cardView}>
+                <View style={{flex: 1, flexDirection: "row", alignItems: "center", height: 80}}> 
+                <View style={{flex: 1, marginLeft: 15}}>
+                <Image style={styles.authorAvatar} source={require('../assets/alisa.png')}/>
+                <Text style={{fontWeight: "bold"}} >
+            { user}
+          </Text>
+          </View>
+                <View style={{flex: 3}}>
+                <Text >
+            { date}
+          </Text>
+         <Text></Text>
+          <Text >
+            {content}
+          </Text>
+                </View>
+        
+          {/* <View style={{flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
+          <Pressable onPress={this.updateLike(avatarId)}>
+              {this.state.liked?
+           <Image source={require('../assets/heart-red.png')}/>
+          :
+          <Image source={require('../assets/heart-white.png')}/>
+              }
+            </Pressable>
+          </View> */}
+          </View>
+          </View>
+);
+
+const renderComment = ({item}) => (
+  <Comment user={item.user} avatarId={item.avatarId} content={item.content} date={item.date}
+        />
+);
+
     return (
       <SafeAreaView style={styles.container}>
 
@@ -82,11 +186,13 @@ class SingleContent extends Component {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       style={styles.list}/>
-      {/* <FlatList
-        data={DATA}
-        renderItem={renderItem}
+      <Card.Divider/>
+      <Text style={{marginLeft: 20, fontWeight: 'bold'}}>Comments:</Text>
+      <FlatList
+        data={COMMENTS}
+        renderItem={renderComment}
         keyExtractor={item => item.id}
-      style={styles.list}/> */}
+      style={styles.list}/>
       <BottomBarSC />
       </SafeAreaView>
     );
@@ -115,7 +221,8 @@ const styles = StyleSheet.create({
     height: 50,
   }, 
   list: {
-      margin: 20
+      marginHorizontal: 20,
+      marginVertical: 5,
   },
   cardView: {
       margin: 20

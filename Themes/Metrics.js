@@ -26,6 +26,9 @@ const metrics = {
   navBarHeight: Platform.OS === "ios" ? 64 : 54,
   buttonRadius: 4,
   lightPink: "#FFC7DE",
+  darkPink: "#F65F94",
+  pink: "#FF89BB",
+  warmYellow: "#FFBD12",
   icons: {
     tiny: 15,
     small: 20,
