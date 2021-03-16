@@ -2,26 +2,26 @@
 import React, { useState } from 'react';
 import {
     View, Text, StyleSheet, SafeAreaView
-    , TextInput, Button, Image, Pressable
+    , TextInput, Button, Image, Pressable,TouchableOpacity,
 } from 'react-native';
 import Metrics from '../Themes/Metrics';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { Typography } from '@material-ui/core';
 
 
 
 export default function BackButton(props) {
-    console.log(props.callback.toString());
+    
     return (
         
 
-            <Pressable onPress={() => { props.callback() }}>
-                {/* <View style={styles.header}> */}
-                    <Icon name="arrow-back-circle-outline"
-                        style={styles.pic}
-                    />
-                {/* </View> */}
-            </Pressable>
+            // <Pressable onPress={() => { props.callback()}}>
+            //         <Image source ={require('../assets/back-btn.png')}/>
+            // </Pressable>
+
+            
+            <TouchableOpacity>
+            <Image source ={require('../assets/back-btn.png')}/>
+            </TouchableOpacity>
 
 
 
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         margin: 10,
-        fontSize: 55
+        
     },
    
 });
