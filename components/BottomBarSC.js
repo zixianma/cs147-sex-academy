@@ -1,13 +1,31 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, TextInput, Pressable} from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Icon, BottomSheet, Divider, Button} from 'react-native-elements';
 import BackButton from './BackButton';
+import BottomButton from './BottomButton';
 import Metrics from '../Themes/Metrics';
 
 const BottomBarSC = () => {
   const [text, onChangeText] = React.useState(null);
   const [liked, onPressLike] = React.useState(false);
   const [starred, onPressStar] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const list = [
+    { title: 'Share to',
+    containerStyle: { backgroundColor: 'black', textAlign: 'center' },
+    titleStyle: { color: 'white'},
+    contentStyle: { textAlign: 'center'}
+    },
+    { title: 'List Item 2' },
+    {
+      title: 'Cancel',
+      containerStyle: { backgroundColor: 'black', textAlign: 'center'},
+      titleStyle: { color: 'white'},
+      contentStyle: { textAlign: 'center'},
+      onPress: () => setIsVisible(false),
+    },
+  ];
 
   return (
 
@@ -18,7 +36,7 @@ const BottomBarSC = () => {
       onChangeText={onChangeText}
       value={text}
       placeholder="comment"
-      keyboardType="numeric"
+      keyboardType="default"
     />
   <Icon style={{justifyContent: "flex-end"}} name='send' type='feather' color='black'/></View>
 
@@ -58,12 +76,34 @@ const BottomBarSC = () => {
          
               }
             </Pressable>
-            <Pressable onPress={() => onPressLike(!liked)}>
+            <Pressable onPress={() => setIsVisible(true)}>
            <Image source={require('../assets/share.png')}/>
           
             </Pressable>
                   </View>
-
+                  <BottomSheet
+                    isVisible={isVisible}
+                    containerStyle={{ backgroundColor: 'rgba(0.5, 0.25, 0, 0.2)', borderRadius: 10 }}
+                  >
+                    <View>
+                      <View style={styles.share_view}>
+                    
+                    <Text style={{fontSize: 20, textAlign: 'center', marginVertical: 20, fontWeight: "bold"}}>Share to</Text>
+                    <Divider style={{height: 3, color: 'black'}} />
+                    <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+                      <Pressable style={styles.social_icon}><Image source={require('../assets/Message.png')}></Image></Pressable>
+                      <Pressable style={styles.social_icon}><Image source={require('../assets/Mesenger.png')}></Image></Pressable>
+                      <Pressable style={styles.social_icon}><Image source={require('../assets/Twitter.png')}></Image></Pressable>
+                      <Pressable style={styles.social_icon}><Image source={require('../assets/Whatsapp.png')}></Image></Pressable>
+                    </View>
+                    </View>
+                    <View style={{backgroundColor: "black"}}>
+                      <Pressable style={styles.share_btn} onPress={() => setIsVisible(false)}><View ><Text style={{color: 'white', textAlign: "center", fontSize: 20, fontWeight: 'bold'}}>Cancel</Text></View></Pressable>
+                    {/* <Button titleStyles={styles.sharebtn} color="white" onPress={() => setIsVisible(false)} title="Cancel" ><Text>Cancel</Text></Button> */}
+                    </View>
+                    </View>
+                    
+                  </BottomSheet>
               </View>
   );
 };
@@ -108,6 +148,25 @@ input: {
 },
 icon: {
   flex: 1
+},
+share_view: {
+  backgroundColor: '#EEEFF4', 
+  height: 0.25 * Metrics.screenHeight,
+  borderTopLeftRadius: 15,
+  borderTopRightRadius: 15,
+  borderWidth: 3,
+  borderColor: 'black'
+},
+share_btn: {
+  backgroundColor: 'black',
+  fontSize: 20,
+  color: 'white',
+  margin: 20,
+},
+social_icon:{
+  flex: 1,
+  marginTop: 35, 
+  marginHorizontal: 20
 }
 });
 
