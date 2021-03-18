@@ -7,6 +7,10 @@ import TopBarSC from "../components/TopBarSC";
 import RecommendBar from "../components/RecommendBar"
 import metrics from "../Themes/Metrics";
 
+//for linking
+import * as Linking from 'expo-linking';
+
+
 const DATA = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -203,7 +207,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    marginHorizontal: 16
+    marginHorizontal: 16,
   },
   item: {
     padding: 20,

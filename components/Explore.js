@@ -1,10 +1,15 @@
 import React, { Component } from "react";
-import { StyleSheet, View, SafeAreaView, FlatList, StatusBar, Image } from "react-native";
+import { StyleSheet, View, SafeAreaView, FlatList, StatusBar, Image, Pressable } from "react-native";
 import { SearchBar, Header, Card, Button, Icon, Text, withTheme } from 'react-native-elements';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import BottomBar from "../components/BottomBar";
 import TopBar from "../components/TopBar";
-import RecommendBar from "../components/RecommendBar"
+import RecommendBar from "../components/RecommendBar";
+
+//linking
+import * as Linking from 'expo-linking';
+import SingleContent from "./SingleContent";
+
 
 const DATA = [
   {
@@ -43,6 +48,11 @@ const DATA = [
 
 
 class Explore extends Component {
+  constructor(props){
+    super(props);
+    console.log('props', props);
+
+  }
 
   render() {
 
@@ -50,22 +60,36 @@ class Explore extends Component {
       // <View style={styles.item}>
       //   <Text style={styles.title}>{title}</Text>
       // </View>
-      <Card containerStyle={{ borderWidth: 0 }}>
-        <Card.Image style={{ borderRadius: 10 }} source={require('../assets/cmi.png')}>
-        </Card.Image>
-        <Card.Divider />
-        <Card.Title style={{ textAlign: "left" }}>{title}</Card.Title>
-        <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
-          <Text style={{ flex: 3 }}>
-            {source ? author + ' @ ' + source : author}
-          </Text>
-          <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-around" }}>
-            <Icon name='heart' type='feather' color='pink' />
-            <Text style={{}}>{likes}</Text>
-          </View>
+      <Pressable
+      onPress={()=>{
+        console.log("p single content");
+        this.props.navigation.navigate('SingleContent');}}
+        // return <SingleContent/>}}
+      // }}
+      
+      >
+          <Card containerStyle={{ borderWidth: 0 }}
+    
+    >
+      <Card.Image style={{ borderRadius: 10 }} source={require('../assets/cmi.png')}>
+      </Card.Image>
+      <Card.Divider />
+      <Card.Title style={{ textAlign: "left" }}>{title}</Card.Title>
+      <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+        <Text style={{ flex: 3 }}>
+          {source ? author + ' @ ' + source : author}
+        </Text>
+        <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-around" }}>
+          <Icon name='heart' type='feather' color='pink' />
+          <Text style={{}}>{likes}</Text>
         </View>
+      </View>
 
-      </Card>
+    </Card>
+
+
+      </Pressable>
+    
     );
 
     const renderItem = ({ item }) => (

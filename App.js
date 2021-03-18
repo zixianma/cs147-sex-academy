@@ -47,20 +47,21 @@ export default function App() {
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: metrics.darkPink
+            backgroundColor: metrics.darkPink,
           },
           headerTitleStyle: {
-            color: 'black',
+            // color: 'transparent',
             fontWeight: 'bold',
             fontSize: 24,
           },
+          headerTintColor:'#fff',
         }}>
-        <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen name='Home' component={Home} options={{title:''}} />
+        <Stack.Screen name='Login' component={Login} options={{title: 'Login'}}/>
         <Stack.Screen name='Suggestions' component={InterestedTopics} />
-        <Stack.Screen name='HomeStatus' component={HomeStatus}/>
-
-        <Stack.Screen name='Explore' component={Explore}/>
+        <Stack.Screen name='HomeStatus' component={HomeStatus} options={{title:''}}/>
+        <Stack.Screen name='Explore' component={Explore} options={{title: 'Feed'}} />
+        <Stack.Screen name='SingleContent' component={SingleContent}/>
 
       </Stack.Navigator>
 
@@ -69,6 +70,12 @@ export default function App() {
 
       {/* <Home/> */}
     </NavigationContainer>
+
+
+    // <View style={styles.container}>
+    //  <JournalEntry/>
+
+    // </View>
 
 
 
