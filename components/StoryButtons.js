@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     button: {
         alignSelf: 'center',
         width: metrics.screenWidth * .3,
-        borderRadius: metrics.screenWidth * .3,
+        borderRadius: 15,
         height: 50,
         backgroundColor: '#18191F',
         justifyContent: 'center',
