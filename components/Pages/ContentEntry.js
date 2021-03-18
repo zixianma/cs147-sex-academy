@@ -12,11 +12,12 @@ import BottomButton from '../BottomButton';
 import { Divider } from 'react-native-elements'; //for textbox 
 import StoryButtons from '../StoryButtons';
 import Share from '../Share';
+import ContentReview from './ContentReview';
+import Explore from '../Explore';
 
 
 
-
-export default function ContentEntry() {
+export default function ContentEntry(props) {
     const [title, setTitle] = useState('');
     const [mood, setMood] = useState("");
     const [journal, setJounral] = useState("Write here...");
@@ -114,11 +115,13 @@ export default function ContentEntry() {
 </View>
                         <View style={styles.buttonBar}>
                             <StoryButtons title={'Cancel'}
-
+                                callback={() => {
+                                    props.navigation.navigate('Review');
+                                }}
                             />
                             <StoryButtons title={'Next'}
-                                callback={() => {
-                                    return <Share />
+                                callback={() => {  
+                                    props.navigation.navigate('Review');
                                 }}
                             />
                         </View>
