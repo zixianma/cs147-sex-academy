@@ -29,20 +29,33 @@ import Share from './components/Share';
 import StorySave from './components/Pages/StorySave';
 import SecretSharerFirst from './components/Pages/SecretSharerFirst';
 import SecretSharerWait from './components/Pages/SecretSharerWait';
+import ContentEntry from './components/Pages/ContentEntry';
+import ContentReview from './components/Pages/ContentReview';
 import metrics from './Themes/Metrics';
 import { SafeAreaView } from 'react-native-safe-area-context';
-// 
+
 
 
 const Stack = createStackNavigator();
 
 
 export default function App() {
+  const MyTheme = {
+    dark: false,
+    colors: {
+      primary: metrics.pink,
+      background: 'white',
+      card: 'rgb(255, 255, 255)',
+      text: 'rgb(28, 28, 30)',
+      border: 'rgb(199, 199, 204)',
+      notification: 'rgb(255, 69, 58)',
+    },
+  };
 
   return (
     
 
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
 
       <Stack.Navigator
         screenOptions={{
@@ -62,6 +75,12 @@ export default function App() {
         <Stack.Screen name='HomeStatus' component={HomeStatus} options={{title:''}}/>
         <Stack.Screen name='Explore' component={Explore} options={{title: 'Feed'}} />
         <Stack.Screen name='SingleContent' component={SingleContent}/>
+        <Stack.Screen name='Search' component={Search}/>
+        <Stack.Screen name='Article' component={Article}/>
+        <Stack.Screen name='Story' component={StoryLanding}/>
+        <Stack.Screen name='Share' component={ContentEntry}/>
+        <Stack.Screen name='Review' component={ContentReview}/>
+        
 
       </Stack.Navigator>
 
