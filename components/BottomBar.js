@@ -4,8 +4,8 @@ import { ButtonGroup, Text, Icon } from 'react-native-elements';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 class BottomBar extends Component {
-    constructor () {
-        super()
+    constructor (props) {
+        super(props)
         this.state = {
           selectedIndex: 0
         }
@@ -13,7 +13,15 @@ class BottomBar extends Component {
         this.windowWidth = Dimensions.get('window').width;
       }
       updateIndex (selectedIndex) {
-        this.setState({selectedIndex})
+        this.setState({selectedIndex});
+        if (selectedIndex == 0){
+          this.props.props.navigation.navigate('Explore');
+        } else if (selectedIndex == 1) {
+          this.props.props.navigation.navigate('Share');
+        } else {
+          this.props.props.navigation.navigate('Story');
+        }
+
       }
       
       render () {
@@ -28,8 +36,9 @@ class BottomBar extends Component {
             onPress={this.updateIndex}
             selectedIndex={selectedIndex}
             buttons={buttons}
-            selectedButtonStyle={{backgroundColor: "#FFC7DE"}}
-            containerStyle={{width: this.windowWidth, height: 60}} />
+            innerBorderStyle={{color:'transparent'}}
+            selectedButtonStyle={{backgroundColor: "#FFC7DE", borderRadius: 60}}
+            containerStyle={{width: this.windowWidth, height: 70, borderColor:'transparent', marginHorizontal: 0}} />
         )
       }
 }
