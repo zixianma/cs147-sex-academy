@@ -44,7 +44,10 @@ const DATA = [
   ];
 
 
-class Explore extends Component {
+class Article extends Component {
+  constructor(props){
+    super(props);
+  }
 
   render() {
 
@@ -79,8 +82,8 @@ class Explore extends Component {
     return (
       <SafeAreaView style={styles.container}>
           <SafeAreaProvider>
-        <TopBar />
-        <RecommendBar />
+        <TopBar props={this.props}/>
+        <RecommendBar props={this.props}/>
 <FlatList 
         data={DATA}
         renderItem={renderItem}
@@ -123,4 +126,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Explore;
+export default Article;

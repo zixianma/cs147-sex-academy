@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { SearchBar } from 'react-native-elements';
 import { StyleSheet, Text, View, Image} from 'react-native';
+import { Pressable } from "react-native";
 
 class TopBar extends Component {
+  constructor(props){
+    super(props);
+  }
+
   state = {
     search: '',
 }
@@ -17,11 +22,17 @@ this.setState({ search });
     return (
       <View style={styles.container}>
         <View style={{flex: 6}}>
+          <Pressable
+        onPress={()=>{
+        this.props.props.navigation.navigate('Search');
+        }}>
           <SearchBar platform="android"
         placeholder="Search..."
         onChangeText={this.updateSearch}
         value={search}
-        style={styles.search}/></View>
+        style={styles.search}/>
+        </Pressable>
+        </View>
         <View style={{flex: 1}}><Image style={styles.tinyLogo} source={require('../assets/avatar.png')}/></View>
       </View>
     );

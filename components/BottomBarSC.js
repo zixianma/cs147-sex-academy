@@ -128,7 +128,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between', // center, space-around
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20, 
+    marginHorizontal: 0
 },
 logo: {
   justifyContent: 'flex-end',

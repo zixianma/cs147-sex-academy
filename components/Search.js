@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
 container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    marginHorizontal: 16,
     width: metrics.screenWidth
   },
   search_container: {
