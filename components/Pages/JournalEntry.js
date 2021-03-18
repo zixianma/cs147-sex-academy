@@ -8,6 +8,7 @@ import BottomButton from '../BottomButton';
 
 import { Divider } from 'react-native-elements'; //for textbox 
 import StoryButtons from '../StoryButtons';
+import Share from '../Share';
 
 
 
@@ -50,7 +51,7 @@ export default function JournalEntry() {
                             {/* <Divider style={{ backgroundColor: 'blue' }} /> */}
                             <TextInput
                                 style={styles.textBox}
-                                onChangeText={() => { setTitle({ mood }) }}
+                                onChangeText={() => { setMood({ mood }) }}
                                 value={mood}
                             />
 
@@ -78,7 +79,11 @@ export default function JournalEntry() {
                         <StoryButtons title= {'Save'}
                         
                         />
-                        <StoryButtons title={'Share'}/>
+                        <StoryButtons title={'Share'}
+                           callback = {()=>{
+                               return <Share/>
+                           }}
+                        />
                         </View>
                         
 

@@ -13,6 +13,7 @@ export default function BottomButton(props) {
     return (
         <TouchableOpacity
             style={styles.button}
+            onPress={()=>{props.callback()}}
         >
             <Text style ={styles.text}> {props.title}</Text>
         </TouchableOpacity>

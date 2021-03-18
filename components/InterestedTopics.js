@@ -7,14 +7,15 @@ import Metrics from '../Themes/Metrics';
 import Icon from 'react-native-vector-icons/AntDesign';
 import BackButton from './BackButton';
 import LogoIcon from './LogoIcon';
-import { fonts,Divider } from 'react-native-elements/dist/config';
+import { fonts, Divider } from 'react-native-elements/dist/config';
 import BottomButton from './BottomButton';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
 
 
-export default function InterestedTopics() {
+export default function InterestedTopics(props) {
 
     var topics = ['Masturbation', 'Healthy Relationships', 'Emotion', 'Sex and Faith',
         'Relationships and Sex', 'STD', 'Beauty Standards', 'Marriage and Sex',
@@ -34,16 +35,9 @@ export default function InterestedTopics() {
                     </View>)} >
 
 
-                    {/* <View style = {styles.textView}>
-                    <Text>{elem}</Text>
-                    </View>
-                     */}
+
                 </Pressable>);
 
-            // <View key={i} style={styles.textView}>
-            //     <Text>{elem}</Text>
-
-            // </View>);
 
         });
 
@@ -52,7 +46,7 @@ export default function InterestedTopics() {
 
         <SafeAreaView>
             <View style={styles.container}>
-                <View style={styles.header}>
+                {/* <View style={styles.header}>
 
                     <BackButton
                         callback={() => { console.log("pressed"); }}
@@ -61,7 +55,7 @@ export default function InterestedTopics() {
                         <LogoIcon />
                     </View>
 
-                </View>
+                </View> */}
 
                 <View style={styles.body}>
                     <View>
@@ -80,10 +74,13 @@ export default function InterestedTopics() {
 
                     </View>
 
+                </View>
+                <View>
+                    <BottomButton title={"Continue"} 
+                    callback={()=>{props.navigation.navigate('HomeStatus')}}/>
 
                 </View>
-                <BottomButton title ={"Continue"}/>
-               
+
 
 
             </View>
@@ -98,22 +95,26 @@ export default function InterestedTopics() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        backgroundColor:'red',
     },
 
-    button:{
 
-    },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: Metrics.screenHeight * 0.08,
         width: Metrics.screenWidth,
+        backgroundColor:'blue',
 
     },
     body: {
-        flex: 9,
+        // flex: 9,
         margin: 10,
-        paddingVertical: 10,
+        paddingVertical: 50,
+
 
 
     },
