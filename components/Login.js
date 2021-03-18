@@ -6,12 +6,13 @@ import {
 import Metrics from '../Themes/Metrics';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { Typography } from '@material-ui/core';
+import BottomButton from './BottomButton';
 
 
 
 
 
-export default function Login() {
+export default function Login({navigation}) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
     //constructor ish code here
@@ -28,7 +29,7 @@ export default function Login() {
                 />
             </View>
             <View style={styles.loginCard}>
-                <View style={{ alignItems: 'center' }}>
+                <View style={{ alignItems: 'center', marginVertical:30}}>
                     <Text style={styles.title}>LOGIN</Text>
                 </View>
                 <View style={styles.textView}>
@@ -39,9 +40,10 @@ export default function Login() {
                         />
                     </View>
                     <TextInput
-                        value={email}
+                        
                         style={styles.textBox}
-                        onChangeText={(email) => setEmail(email)}
+                        onChangeText={() => setEmail({email})}
+                        value={email}
                         onSubmitEditing={() => { console.log("text submitted"); }}
                     />
 
@@ -54,20 +56,28 @@ export default function Login() {
                         />
                     </View>
                     <TextInput
-                        value={password}
+                        
                         style={styles.textBox}
-                        onChangeText={(password) => setPassword(password)}
+                        onChangeText={() => setPassword({password})}
+                        value={password}
                         onSubmitEditing={() => { console.log("password submitted"); }}
                     />
 
                 </View>
-                <Button
+                {/* <Button
                     onPress={console.log("button")}
                     title="Sign in"
 
                     accessibilityLabel="Learn more about this purple button"
+                /> */}
+                <View style={{marginTop:30}}>
+                <BottomButton title='Sign In'
+                callback={()=>{navigation.navigate('Suggestions')}}
                 />
 
+
+                </View>
+                
 
             </View>
 

@@ -1,11 +1,13 @@
 import React from 'react'
 import { Text,TouchableOpacity, StyleSheet } from 'react-native';
 import metrics from '../Themes/Metrics';
+import Share from '../components/Share';
 export default function StoryButtons(props) {
     
     return (
         <TouchableOpacity
             style={styles.button}
+            onPress={()=>{props.callback()}}
         >
             <Text style={styles.text}> {props.title}</Text>
         </TouchableOpacity>

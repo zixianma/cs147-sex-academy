@@ -21,17 +21,24 @@ export default function Home({navigation}) {
                 </View>
                 <View style={styles.card}>
                     <Text style={styles.title}>
-                        Sex Academy
+                        You are all set!
                 </Text>
                     <View>
-                        <Text style={styles.sub}>Personalized Sex Ed with Stories</Text>
+                        <Text style={styles.sub}>
+                            We have saved your information and topic preferences.
+                        </Text>
+                    </View>
+                    <View>
+                        <Text style={styles.sub}>
+                            You may edit topics you are interested later.
+                        </Text>
                     </View>
                 </View>
                 <View>
                     <BottomButton
-                        title='Get Started' 
+                        title='Start exploring' 
                         callback ={()=>{
-                            navigation.navigate('Login');
+                            navigation.navigate('Explore');
                         }}/>
                 </View>
 
