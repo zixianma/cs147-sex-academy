@@ -12,7 +12,7 @@ import BottomBar from '../BottomBar';
 import { ProgressBar, Colors } from 'react-native-paper';
 
 
-export default function SecretSharerWait() {
+export default function SecretSharerWait({navigation}) {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
@@ -22,11 +22,14 @@ export default function SecretSharerWait() {
                 if (newCount === 1) {
                     clearInterval(interval);
                     // setCount(0);
+                    navigation.navigate('SecretSharerFound');
                     
                 }
                 return newCount;
             })
         }, 2000);
+
+        
     }, []);
 
 
@@ -36,11 +39,10 @@ export default function SecretSharerWait() {
 
 
 
-
     return (
-        <SafeAreaView>
-            <StoryHeader />
-            <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            {/* <StoryHeader /> */}
+            {/* <View style={styles.container}> */}
 
                 <View style={{
                     alignSelf: 'center', justifySelf: 'center',
@@ -77,7 +79,7 @@ export default function SecretSharerWait() {
 
 
 
-            </View>
+            {/* </View> */}
 
 
         </SafeAreaView>
