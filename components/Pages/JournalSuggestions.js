@@ -5,7 +5,7 @@ import BackButton from '../BackButton';
 import BottomBar from '../BottomBar';
 import StoryHeader from '../StoryHeader';
 import BottomButton from '../BottomButton';
-export default function JournalSuggestions({navigation}) {
+export default function JournalSuggestions(props) {
     var topics = ['First period', 'Hyper masculinity','break up' ,'Unrequited love',
         'First kiss', 'STD scare', 'Myths about Sex', 'Abortion', 'Masturbation'];
 
@@ -54,7 +54,7 @@ return (
                 </View>
             </View>
             <BottomButton title={<Text>Go write one </Text>}/>
-            <BottomBar />
+            <BottomBar props={props}/>
         </View>
     </SafeAreaView>
 )

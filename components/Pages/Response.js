@@ -14,17 +14,19 @@ import StorySave from './StorySave';
 
 
 
-export default function Response({navigation}) {
+export default function Response(props) {
     const [response, setResponse] = useState('Write response here. Be kind and empathetic...');
     const [isVisible, setIsVisible] = useState(false);
     const [move,setMove] = useState(false);
 
     useEffect(
 
+
         ()=>{
+            setIsVisible(false);//test
             if(move===true){
                 //delay and navigate 
-                setTimeout(()=>{navigation.navigate('SecretSharerWait')}, 2000);
+                setTimeout(()=>{props.navigation.navigate('SecretSharerWait')}, 2000);
             }
 
         }

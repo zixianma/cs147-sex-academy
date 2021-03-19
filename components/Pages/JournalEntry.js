@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { TouchableOpacity, TextInput, View, StyleSheet, Text, SafeAreaView, Image } from 'react-native';
 import metrics from '../../Themes/Metrics';
 import BackButton from '../BackButton';
@@ -15,9 +15,11 @@ import { set } from 'react-native-reanimated';
 import StorySave from './StorySave';
 import SecretSharerFirst from './SecretSharerFirst';
 
+//props.navigation 
 
 
-export default function JournalEntry({ navigation }) {
+
+export default function JournalEntry(props) {
     const [title, setTitle] = useState('');
     const [mood, setMood] = useState("");
     const [journal, setJounral] = useState("Write here...");
@@ -26,13 +28,17 @@ export default function JournalEntry({ navigation }) {
     const [response, setResponse] = useState(false);
     const [hasShared, setHasShared] = useState(false);
     const [hasSaved, setHasSaved] = useState(false);
+    const[cancel, setCancel] =useState(false);
+    const [shout,setShout] = useState(false);
+    
 
 
 
     useEffect(() => {
 
         if (response === true) {
-            navigation.navigate('Response');
+            setRightVisible(false);
+            props.navigation.navigate('Response');
         }
 
     })
@@ -96,6 +102,7 @@ export default function JournalEntry({ navigation }) {
 
                     <View style={styles.buttonBar}>
                         <StoryButtons title={'Save'}
+                          hasShared= {null}
                             callback={() => {
                                 if (!hasSaved) {
                                     //    return <Share/>
@@ -104,27 +111,52 @@ export default function JournalEntry({ navigation }) {
                                     setHasSaved(true);
                                 }else{
                                     alert('You have saved this already!');
+                                    
+                                    
+                                    // setTimeout((()=>{
+                                    //     props.navigation.navigate('Response');
+                                    // }),2000);
                                 }
 
 
                             }}
 
                         />
-                        <StoryButtons title={'Share'}
+
+                        {/* <StoryButtons title={'Share'}
+                            hasShared={()=>{setHasShared(true)}}
                             callback={() => {
+                                console.log('share btn ', hasShared);
                                 if (!hasShared) {
                                     //    return <Share/>
                                     console.log('share p');
                                     setRightVisible(true);
-                                    setHasShared(true);
+                                    setHasShared(true);  
+                                    // out for debugging share bug
 
                                 }
                                 else {
-                                    alert("You have shared this already!");
+                                    // alert("You have shared this already!");
+                                     alert('You have shared it alrady');
                                 }
 
-
                             }}
+                        /> */}
+                        <StoryButtons 
+                        title={'Share'} 
+                        //process a modal 
+                        callback={()=>{ 
+                            //display a modal 
+                            if(!hasShared){
+                                setRightVisible(true);
+                            }
+                            else{
+                                alert('You have shared it already')
+                            }
+
+                        }}
+
+
                         />
                     </View>
 
@@ -137,7 +169,12 @@ export default function JournalEntry({ navigation }) {
                 containerStyle={{ backgroundColor: 'rgba(0.5, 0.25, 0, 0.2)', borderRadius: 10 }}>
                 <StorySave
                     text='Your story is saved!'
-                    callback={() => setIsVisible(false)}
+                    callback={() => {setIsVisible(false); 
+                    // const time = setTimeout( ()=>{props.navigation.navigate('Response')},3000);
+                    // clearTimeout(time);
+                }
+
+                    }
                 />
                 {console.log('isVisible ', isVisible)}
 
@@ -150,23 +187,46 @@ export default function JournalEntry({ navigation }) {
                 <SecretSharerFirst
                     callback={() => {
                         setRightVisible(false);
+                        props.navigation.navigate('JournalEntry');
+                        console.log('callback called secretsharer');
+                        
 
                     }}
                     transition={() => {
+                        
+                        setRightVisible(false);
                         setResponse(true);
-                        console.log('transition test', response);
+                        // props.navigation.navigate('Response');
+                       
+                        // console.log('transition test', response);
                     }}
 
                 />
                 {console.log('rightVisible', rightVisible)}
+
+                {/* share (modal)  -> cancel btn & response btn -> cancel pressed )share modal invisible */}
 
 
 
             </BottomSheet>
 
 
+            {/* <BottomSheet
+             isVisible={shout}
+             containerStyle={{ backgroundColor: 'rgba(0.5, 0.25, 0, 0.2)', borderRadius: 10 }}
+            >
+            <StorySave 
+            text='You have shared this already'
+            callback={()=>{setShout(false); 
+            props.navigation.navigate(response);
+            }}
+            />
 
-            <BottomBar />
+            </BottomSheet> */}
+
+
+
+            <BottomBar props={props}/>
 
             {/* </View> */}
 

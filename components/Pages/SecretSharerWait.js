@@ -12,7 +12,7 @@ import BottomBar from '../BottomBar';
 import { ProgressBar, Colors } from 'react-native-paper';
 
 
-export default function SecretSharerWait({navigation}) {
+export default function SecretSharerWait(props) {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ export default function SecretSharerWait({navigation}) {
                 if (newCount === 1) {
                     clearInterval(interval);
                     // setCount(0);
-                    navigation.navigate('SecretSharerFound');
+                    props.navigation.navigate('SecretSharerFound');
                     
                 }
                 return newCount;

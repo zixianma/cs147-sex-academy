@@ -7,12 +7,12 @@ import BottomBar from '../BottomBar';
 import StoryHeader from '../StoryHeader';
 import BottomButton from '../BottomButton';
 
-export default function StoryLanding({navigation}) {
+export default function StoryLanding(props) {
     const [transition, setTransition ] = useState(false);
 
     useEffect(()=>{
         if(transition ===true){
-            navigation.navigate('JournalEntry');
+            props.navigation.navigate('JournalEntry');
         }
     })
     return (
@@ -43,13 +43,15 @@ export default function StoryLanding({navigation}) {
                 </View>
 
                 <BottomButton title={<Text>Tell a story </Text>}
-                callback={()=>{ setTransition(true)}}
+                // callback={()=>{ setTransition(true)}}
+                callback={()=>{props.navigation.navigate('JournalEntry'); }}
                 />
+
                 {/* <View style={styles.footText}>
                     <Text style={{ fontSize: 15, fontWeight:'600',color:'#FF89BB' }}>Don't know what to write about?</Text>
 
                 </View> */}
-                <BottomBar />
+                <BottomBar props={props}/>
 
 
 

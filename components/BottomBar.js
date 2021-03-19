@@ -5,7 +5,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 class BottomBar extends Component {
     constructor (props) {
-        super(props)
+        super(props);
+        console.log('p bottom bar', props);
         this.state = {
           selectedIndex: 0
         }

@@ -7,7 +7,12 @@ export default function StoryButtons(props) {
     return (
         <TouchableOpacity
             style={styles.button}
-            onPress={()=>{props.callback()}}
+            onPress={()=>{props.callback(); 
+            
+            if(props.hasShared){
+                props.hasShared();
+            }
+            }}
         >
             <Text style={styles.text}> {props.title}</Text>
         </TouchableOpacity>

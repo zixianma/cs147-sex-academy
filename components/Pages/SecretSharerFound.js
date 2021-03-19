@@ -3,8 +3,22 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import metrics from '../../Themes/Metrics';
 import BottomBar from '../BottomBar';
-export default function SecretSharerFound({ navigation }) {
-   const [message, setMessage] = useState('Type your message');
+export default function SecretSharerFound(props) {
+    const [message, setMessage] = useState('Type your message');
+    const [sent, setSent] = useState(false);
+
+
+    const messageView= (message)=>{
+        return (<View style={styles.chat}>
+            <Text>message</Text>
+            
+            
+        </View>)
+    }
+
+    useEffect(()=>{
+        console.log(message);
+    });
     return (
         <SafeAreaView style={styles.container}>
             <View style={{ alignSelf: 'center' }}>
@@ -23,7 +37,6 @@ export default function SecretSharerFound({ navigation }) {
                     <View style={styles.thumbnail}>
                         <Image
                             style={styles.image}
-
                             source={require('../../assets/alisa.png')}
 
                         />
@@ -31,6 +44,8 @@ export default function SecretSharerFound({ navigation }) {
                     <View style={{ flex: 8, }}>
                         <Text style={styles.text}>Hey, we found you a Secret Sharer based on your similar experiences. Meet @Polaris!</Text>
                     </View>
+
+                   
                 </View>
 
             </View>
@@ -53,23 +68,26 @@ export default function SecretSharerFound({ navigation }) {
                         </Text>
                 </View>
             </View>
+            {sent === true ?
+                    messageView({message}) : console.log('hi')}
 
             <View style={styles.box}>
-            
-            <TextInput
-                            onChangeText={() => { setMessage({ message }) }}
-                            value={message}
-                            multiline={true}
-                            scrollEnabled={true}
-                            blurOnSubmit={true}
-                            returnKeyLabel='done'
-                        />
 
-            
+                <TextInput
+                    onChangeText={() => { setMessage({message}) }}
+                    value={message}
+                    multiline={true}
+                    scrollEnabled={true}
+                    blurOnSubmit={true}
+                    returnKeyLabel='done'
+                    onSubmitEditing={() => { setSent(true); }}
+                />
+
+
             </View>
-            <BottomBar/>
-           
-              {/* </View> */}
+            <BottomBar props={props} />
+
+            {/* </View> */}
 
             {/* </View > */}
 
@@ -91,7 +109,7 @@ const styles = StyleSheet.create({
 
         // width: metrics.screenWidth * 0.7,
         // backgroundColor: 'red',
-        
+
         margin: 10,
         padding: 10,
         borderRadius: 20,
@@ -100,10 +118,10 @@ const styles = StyleSheet.create({
 
 
     },
-    thumbnail:{
-        flex: 1, 
-        alignSelf:'flex-start',
-        marginRight:10,
+    thumbnail: {
+        flex: 1,
+        alignSelf: 'flex-start',
+        marginRight: 10,
 
     },
     image: {
@@ -114,11 +132,11 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        lineHeight:30,
+        lineHeight: 30,
 
     },
     box: {
-       alignSelf:'flex-end',
+        alignSelf: 'flex-end',
 
         flexDirection: 'row',
         paddingVertical: 30,
@@ -129,7 +147,7 @@ const styles = StyleSheet.create({
         width: metrics.screenWidth * .9,
         height: metrics.screenHeight * .1,
         fontSize: 15,
-        margin:10,
+        margin: 10,
         // backgroundColor:'red',
 
     }

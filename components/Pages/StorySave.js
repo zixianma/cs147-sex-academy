@@ -8,7 +8,7 @@ import BottomButton from '../../components/BottomButton';
 import metrics from '../../Themes/Metrics';
 
 export default function StorySave(props) {
-
+//journal -> storySave ->BottomButton 
     return (
         <View style={styles.container}>
             <View style={styles.card}>
