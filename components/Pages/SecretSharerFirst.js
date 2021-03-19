@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import {
     View, Text, StyleSheet, SafeAreaView, Pressable
     , TextInput, Image, Button, TouchableOpacity,
@@ -7,8 +7,11 @@ import BottomButton from '../BottomButton';
 
 import metrics from '../../Themes/Metrics';
 import StoryButtons from '../StoryButtons';
+import StoryButtonAlternate from '../StoryButtonAlternate';
 
-export default function SecretSharerFirst() {
+export default function SecretSharerFirst(props) {
+    // const [transition, isTransition] = useState(false);
+ 
 
     return (
         <View style={styles.container}>
@@ -27,8 +30,15 @@ export default function SecretSharerFirst() {
                 </View>
                 <View style={{ margin: 10, flexDirection: 'row',justifyContent:'space-around' }}>
                     
-                  <StoryButtons title='Cancel'/>
-                  <StoryButtons title='Go write'/>
+                  <StoryButtons title='Cancel'
+                  callback={props.callback}/>
+                  <StoryButtonAlternate title='Go write'
+                
+                  callback={props.callback}
+                  transition ={props.transition}
+
+                  
+                  />
 
 
                 </View>
@@ -54,6 +64,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         backgroundColor: '#FFF4CC',
         padding:10,
+        marginBottom:300,
 
 
     },

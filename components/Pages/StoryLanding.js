@@ -1,5 +1,5 @@
 import { StylesProvider } from '@material-ui/styles';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, SafeAreaView, Image } from 'react-native';
 import metrics from '../../Themes/Metrics';
 import BackButton from '../BackButton';
@@ -7,12 +7,19 @@ import BottomBar from '../BottomBar';
 import StoryHeader from '../StoryHeader';
 import BottomButton from '../BottomButton';
 
-export default function StoryLanding() {
-    return (
-        <SafeAreaView>
-            <View style={styles.container}>
+export default function StoryLanding({navigation}) {
+    const [transition, setTransition ] = useState(false);
 
-                <StoryHeader />
+    useEffect(()=>{
+        if(transition ===true){
+            navigation.navigate('JournalEntry');
+        }
+    })
+    return (
+        <SafeAreaView style={styles.container}>
+            {/* <View style={styles.container}> */}
+
+                {/* <StoryHeader /> */}
                 <View style={styles.body}>
 
                     <View style={styles.card}>
@@ -35,17 +42,19 @@ export default function StoryLanding() {
 
                 </View>
 
-                <BottomButton title={<Text>Tell a story </Text>} />
-                <View style={styles.footText}>
+                <BottomButton title={<Text>Tell a story </Text>}
+                callback={()=>{ setTransition(true)}}
+                />
+                {/* <View style={styles.footText}>
                     <Text style={{ fontSize: 15, fontWeight:'600',color:'#FF89BB' }}>Don't know what to write about?</Text>
 
-                </View>
+                </View> */}
                 <BottomBar />
 
 
 
 
-            </View>
+            {/* </View> */}
         </SafeAreaView>
 
     )
@@ -60,6 +69,7 @@ const styles = StyleSheet.create({
 
     },
     body: {
+        marginTop:50,
         justifyContent: 'center',
         alignItems: 'center',
         width: metrics.screenWidth,

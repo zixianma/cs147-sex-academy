@@ -18,6 +18,7 @@ export default function Login({navigation}) {
     //constructor ish code here
     const [email, setEmail] = useState("Enter your email.");
     const [password, setPassword] = useState("Enter your password");
+    
 
     return (
         <SafeAreaView style={styles.container}>
@@ -72,7 +73,13 @@ export default function Login({navigation}) {
                 /> */}
                 <View style={{marginTop:30}}>
                 <BottomButton title='Sign In'
-                callback={()=>{navigation.navigate('Suggestions')}}
+                callback={()=>{
+                    if(email === "" || password ==="" || email ==="Enter your email" || password ==='Enter your password')
+                    {alert('Please enter valid email and password');}
+                    else{
+                        navigation.navigate('Suggestions')}}
+
+                    }
                 />
 
 

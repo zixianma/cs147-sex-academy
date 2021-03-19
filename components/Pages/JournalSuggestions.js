@@ -5,7 +5,7 @@ import BackButton from '../BackButton';
 import BottomBar from '../BottomBar';
 import StoryHeader from '../StoryHeader';
 import BottomButton from '../BottomButton';
-export default function JournalSuggestions() {
+export default function JournalSuggestions({navigation}) {
     var topics = ['First period', 'Hyper masculinity','break up' ,'Unrequited love',
         'First kiss', 'STD scare', 'Myths about Sex', 'Abortion', 'Masturbation'];
 

@@ -33,6 +33,9 @@ import ContentEntry from './components/Pages/ContentEntry';
 import ContentReview from './components/Pages/ContentReview';
 import metrics from './Themes/Metrics';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Response from './components/Pages/Response';
+import UserPressable from './components/UserPressable';
+import SecretSharerFound from './components/Pages/SecretSharerFound';
 
 
 
@@ -61,6 +64,7 @@ export default function App() {
         screenOptions={{
           headerStyle: {
             backgroundColor: metrics.darkPink,
+            
           },
           headerTitleStyle: {
             // color: 'transparent',
@@ -69,15 +73,24 @@ export default function App() {
           },
           headerTintColor:'#fff',
         }}>
-        <Stack.Screen name='Home' component={Home} options={{title:''}} />
+        <Stack.Screen name='Home' component={Home} options={{title:'', headerRight:()=>{return <UserPressable/>}}} />
         <Stack.Screen name='Login' component={Login} options={{title: 'Login'}}/>
-        <Stack.Screen name='Suggestions' component={InterestedTopics} />
+        <Stack.Screen name='Suggestions' component={InterestedTopics} options={{title:''}} />
         <Stack.Screen name='HomeStatus' component={HomeStatus} options={{title:''}}/>
         <Stack.Screen name='Explore' component={Explore} options={{title: 'Feed'}} />
-        <Stack.Screen name='SingleContent' component={SingleContent}/>
+        <Stack.Screen name='SingleContent' component={SingleContent} options={{title:'Article'}}/>
         <Stack.Screen name='Search' component={Search}/>
         <Stack.Screen name='Article' component={Article}/>
-        <Stack.Screen name='Story' component={StoryLanding}/>
+        {/* story navs */}
+        <Stack.Screen name='Story' component={StoryLanding} options={{title:'Story'}}/>
+        <Stack.Screen name='JournalEntry' component={JournalEntry} options={{title:''}}/>
+        <Stack.Screen name='JournalSuggestions' component={JournalSuggestions} options={{title:''}}/>
+        <Stack.Screen name='Response' component={Response}/>
+        <Stack.Screen name='SecretSharerWait' component={SecretSharerWait} options={{title:'Matching...'}}/>
+        <Stack.Screen name ='SecretSharerFound' component={SecretSharerFound} options={{title:'Secret Sharer'}}/>
+
+
+
         <Stack.Screen name='Share' component={ContentEntry}/>
         <Stack.Screen name='Review' component={ContentReview}/>
         

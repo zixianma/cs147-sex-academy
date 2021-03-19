@@ -7,14 +7,14 @@ import BottomButton from '../../components/BottomButton';
 
 import metrics from '../../Themes/Metrics';
 
-export default function StorySave() {
+export default function StorySave(props) {
 
     return (
         <View style={styles.container}>
             <View style={styles.card}>
-                <View>
+                <View style={{justifyContent:'center', alignItems:'center',}}>
                     <Text style={{ fontSize: 27, fontWeight: '400' }}> 
-                    Your story is saved to your profile page.
+                    {props.text}
                     </Text>
 
 
@@ -26,7 +26,9 @@ export default function StorySave() {
                 </View>
                 <View style={{margin:10}}>
 
-                <BottomButton title='Ok!' />
+                <BottomButton title='Ok!' 
+                callback={props.callback}/>
+                
 
                 </View>
 
@@ -47,7 +49,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderWidth: 2,
         borderColor: 'black',
-        // backgroundColor: 'red',
+        backgroundColor: 'white',
+        marginBottom:300,
         flexWrap: 'wrap',
 
     },
@@ -57,6 +60,7 @@ const styles = StyleSheet.create({
         width: metrics.screenWidth * 0.8,
         // height: metrics.screenHeight * 0.25,
         flexWrap: 'wrap',
+        justifyContent:'center',
 
     }
 

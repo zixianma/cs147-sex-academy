@@ -219,7 +219,7 @@ class Explore extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <SafeAreaProvider>
-          <TopBar props={this.props}/>
+          {/* <TopBar props={this.props}/> */}
           <RecommendBar props={this.props}/>
           <FlatList
             data={DATA}

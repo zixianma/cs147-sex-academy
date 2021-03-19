@@ -44,8 +44,8 @@ export default function InterestedTopics(props) {
     }
     return (
 
-        <SafeAreaView>
-            <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            {/* <View style={styles.container}> */}
                 {/* <View style={styles.header}>
 
                     <BackButton
@@ -58,13 +58,13 @@ export default function InterestedTopics(props) {
                 </View> */}
 
                 <View style={styles.body}>
-                    <View>
+                    <View style={{marginBottom:20,}}>
                         <Text style={{
                             fontSize: 36, fontWeight: 'bold',
 
                         }}>Find interested Topics</Text>
                     </View>
-                    <View>
+                    <View style={{marginBottom:10}}>
                         <Text style={{ fontSize: 21, }}>Select topics you want to explore in Sex Academy</Text>
                     </View>
                     <View style={styles.suggestions}>
@@ -75,7 +75,7 @@ export default function InterestedTopics(props) {
                     </View>
 
                 </View>
-                <View>
+                <View style={{marginBottom:50}}>
                     <BottomButton title={"Continue"} 
                     callback={()=>{props.navigation.navigate('HomeStatus')}}/>
 
@@ -83,7 +83,7 @@ export default function InterestedTopics(props) {
 
 
 
-            </View>
+            {/* </View> */}
 
         </SafeAreaView>
 
@@ -98,22 +98,22 @@ const styles = StyleSheet.create({
 
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        backgroundColor:'red',
     },
 
 
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        height: Metrics.screenHeight * 0.08,
-        width: Metrics.screenWidth,
-        backgroundColor:'blue',
+    // header: {
+    //     flexDirection: 'row',
+    //     justifyContent: 'space-between',
+    //     height: Metrics.screenHeight * 0.08,
+    //     width: Metrics.screenWidth,
+    //     backgroundColor:'blue',
 
-    },
+    // },
     body: {
         // flex: 9,
+        flex:1,
         margin: 10,
-        paddingVertical: 50,
+        padding:10,
 
 
 

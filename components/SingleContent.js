@@ -425,7 +425,7 @@ const renderComment = ({item}) => (
     return (
       <SafeAreaView style={styles.container}>
 
-        <TopBarSC />
+        {/* <TopBarSC /> */}
 <FlatList
         data={DATA}
         renderItem={renderItem}
