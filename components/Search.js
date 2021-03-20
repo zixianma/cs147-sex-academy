@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { SearchBar, Card, Icon } from 'react-native-elements';
-import { StyleSheet, Text, View, StatusBar, Image} from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image, Pressable} from 'react-native';
 import metrics from '../Themes/Metrics';
 import { SafeAreaView } from "react-native-safe-area-context";
 
 class Search extends Component {
+  constructor(props){
+    super(props);
+  }
+
   state = {
     search: '',
 }
@@ -20,11 +24,16 @@ this.setState({ search });
         <SafeAreaView style={styles.container}>
       <View style={styles.search_container}>
         <View style={{flex: 6}}>
+          <Pressable onPress={()=>{
+        this.props.navigation.navigate('Results');
+        }}>
           <SearchBar platform="android"
         placeholder="Search..."
         onChangeText={this.updateSearch}
         value={search}
-        style={styles.search}/></View>
+        style={styles.search}/>
+        </Pressable>
+        </View>
       </View>
       <Card containerStyle={{borderWidth: 2, borderColor: 'black', borderRadius: 10, backgroundColor: "#FFF3F8"}}>
         

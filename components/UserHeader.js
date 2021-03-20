@@ -5,17 +5,17 @@ import BackButton from './BackButton';
 import BottomButton from './BottomButton';
 import Metrics from '../Themes/Metrics';
 
-const UserHeader = () => {
+export default function UserHeader (props){
   const [text, onChangeText] = React.useState(null);
   const [liked, onPressLike] = React.useState(false);
   const [starred, onPressStar] = React.useState(false);
-
+  console.log("User header:", props);
   return (
       <View >
 <View>
                       <View style={styles.user_view}>
                     
-                    <BackButton />
+                    {/* <BackButton /> */}
                     <View style={{flexDirection: 'row'}}>
                     <Image style={styles.user_pic} source={require('../assets/avatar.png')} />
                     <View>
@@ -26,8 +26,15 @@ const UserHeader = () => {
                         @katiness
                         </Text>
                         <View style={{flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
-                        <Pressable style={styles.share_btn}><View ><Text style={{color: 'white', textAlign: "center", fontSize: 16, fontWeight: 'bold'}}>Edit profile</Text></View></Pressable>
-                        <Pressable>
+                        <Pressable style={styles.share_btn} onPress={()=>{
+        props.props.navigation.navigate('EditProfile');}}>
+                          <View >
+                            <Text style={{color: 'white', textAlign: "center", fontSize: 16, fontWeight: 'bold'}}>Edit profile
+                            </Text>
+                            </View>
+                            </Pressable>
+                        <Pressable onPress={()=>{
+        props.props.navigation.navigate('EditSetting');}}>
                         <Icon name='settings' reverse type='feather' color={Metrics.lightPink}/>
                         </Pressable>
                         </View>
@@ -92,9 +99,10 @@ icon: {
 },
 user_view: {
   backgroundColor: Metrics.pink, 
-  height: 0.35 * Metrics.screenHeight,
+  height: 0.30 * Metrics.screenHeight,
   borderBottomLeftRadius: 35,
   borderBottomRightRadius: 35,
+  paddingTop: 30
 },
 share_btn: {
   backgroundColor: Metrics.lightPink,
@@ -128,4 +136,3 @@ user_pic: {
 });
 
 
-export default UserHeader;

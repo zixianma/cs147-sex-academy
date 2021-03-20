@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { StyleSheet, View, SafeAreaView, FlatList, StatusBar, Image, Pressable } from "react-native";
 import { SearchBar, Header, Card, Button, Icon, Text, withTheme } from 'react-native-elements';
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import BottomBar from "../components/BottomBar";
-import TopBar from "../components/TopBar";
-import RecommendBar from "../components/RecommendBar";
+import BottomBar from "./BottomBar";
+import TopBar from "./TopBar";
+import RecommendBar from "./RecommendBar";
 import Metrics from "../Themes/Metrics"
 //linking
 import * as Linking from 'expo-linking';
@@ -12,14 +12,6 @@ import SingleContent from "./SingleContent";
 
 
 const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'How to talk to teenagers about porn',
-    imageUrl: require('../assets/demo_0.png'),
-    author: 'Alisa Red',
-    likes: 2021,
-    source: "Child Mind Insstitute"
-  },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
     title: 'How porn changes the way teens think about sex',
@@ -29,20 +21,20 @@ const DATA = [
     source: "TEDMED"
   },
   {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'How to talk to teenagers about porn',
+    imageUrl: require('../assets/demo_0.png'),
+    author: 'Alisa Red',
+    likes: 2021,
+    source: "Child Mind Insstitute"
+  },
+  {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
     title: 'Losing my v card, masturbation, and other...',
     imageUrl: require('../assets/demo_2.png'),
     author: 'Ashley aka bestdressed',
     likes: 2021,
     source: "Youtube"
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d73',
-    title: 'Getting this party started',
-    imageUrl: require('../assets/demo_3.png'),
-    author: 'The Dildorks',
-    likes: 2021,
-    source: "Podcast"
   },
 ];
 

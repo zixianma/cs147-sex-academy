@@ -36,7 +36,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Response from './components/Pages/Response';
 import UserPressable from './components/UserPressable';
 import SecretSharerFound from './components/Pages/SecretSharerFound';
-
+import SearchResult from './components/SearchResult';
+import User from './components/User';
+import EditProfile from './components/EditProfile';
+import EditSetting from './components/EditSetting';
 
 
 const Stack = createStackNavigator();
@@ -78,9 +81,10 @@ export default function App() {
         <Stack.Screen name='Suggestions' component={InterestedTopics} options={{title:''}} />
         <Stack.Screen name='HomeStatus' component={HomeStatus} options={{title:''}}/>
         <Stack.Screen name='Explore' component={Explore} options={{title: 'Feed'}} />
-        <Stack.Screen name='SingleContent' component={SingleContent} options={{title:'Article'}}/>
+        <Stack.Screen name='SingleContent' component={SingleContent} options={{title:''}}/>
         <Stack.Screen name='Search' component={Search}/>
-        <Stack.Screen name='Article' component={Article}/>
+        <Stack.Screen name='Results' component={SearchResult}/>
+        <Stack.Screen name='Article' component={Article} options={{title: 'Feed'}}/>
         {/* story navs */}
         <Stack.Screen name='Story' component={StoryLanding} options={{title:'Story'}}/>
         <Stack.Screen name='JournalEntry' component={JournalEntry} options={{title:''}}/>
@@ -89,10 +93,12 @@ export default function App() {
         <Stack.Screen name='SecretSharerWait' component={SecretSharerWait} options={{title:'Matching...'}}/>
         <Stack.Screen name ='SecretSharerFound' component={SecretSharerFound} options={{title:'Secret Sharer'}}/>
 
-
-
         <Stack.Screen name='Share' component={ContentEntry}/>
         <Stack.Screen name='Review' component={ContentReview}/>
+
+        <Stack.Screen name='User' component={User} options={{title:'Me'}}/>
+        <Stack.Screen name='EditProfile' component={EditProfile} options={{title:'Edit Profile'}}/>
+        <Stack.Screen name='EditSetting' component={EditSetting} options={{title:'Settings'}}/>
         
 
       </Stack.Navigator>

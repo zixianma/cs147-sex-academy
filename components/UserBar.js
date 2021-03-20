@@ -29,8 +29,9 @@ class UserBar extends Component {
             onPress={this.updateIndex}
             selectedIndex={selectedIndex}
             buttons={buttons}
-            selectedButtonStyle={{backgroundColor: Metrics.warmYellow}}
-            containerStyle={{width: 0.8 * this.windowWidth, height: 60, borderRadius: 20, borderColor: 'black', borderWidth: '3', alignSelf: 'center'}} />
+            innerBorderStyle={{color:'transparent'}}
+            selectedButtonStyle={{backgroundColor: Metrics.warmYellow, borderRadius: 20}}
+            containerStyle={{width: this.windowWidth * 0.8, height: 60, borderColor:'black', borderRadius: 20, borderWidth: 2, marginHorizontal: 0, alignSelf: 'center'}} />
         )
       }
 }

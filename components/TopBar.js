@@ -33,7 +33,13 @@ this.setState({ search });
         style={styles.search}/>
         </Pressable>
         </View>
-        <View style={{flex: 1}}><Image style={styles.tinyLogo} source={require('../assets/avatar.png')}/></View>
+
+        <View style={{flex: 1}}>
+          <Pressable onPress={()=>{
+        this.props.props.navigation.navigate('User');}}>
+          <Image style={styles.tinyLogo} source={require('../assets/avatar.png')}/>
+          </Pressable>
+          </View>
       </View>
     );
   }

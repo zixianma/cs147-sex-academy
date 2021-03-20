@@ -15,12 +15,7 @@ const EditSetting = () => {
   const toggleSwitch3 = () => setIsEnabled3(previousState => !previousState);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.search_container}>
-        <View style={{ flex: 6 }}>
-        </View>
-      </View>
-      {/* <Image style={styles.avatar} source={require('../assets/avatar.png')}></Image> */}
+    <View style={styles.container}>
       <Card containerStyle={styles.card}>
 
         <Card.Title style={{ textAlign: "left", fontSize: 20 }}>General</Card.Title>
@@ -77,7 +72,7 @@ const EditSetting = () => {
 
         </View>
       </Card>
-    </SafeAreaView>
+    </View>
   );
 
 }
@@ -85,27 +80,8 @@ const EditSetting = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
-    marginHorizontal: 16,
-    width: metrics.screenWidth
-  },
-  search_container: {
-    alignSelf: 'stretch',
-    height: 60,
-    flexDirection: 'row', // row
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'space-between', // center, space-around
-    paddingLeft: 20,
-    paddingRight: 20
-  },
-  search: {
-    width: 200,
-    flex: 5,
-    borderColor: 'grey',
-    borderWidth: 2,
-    borderRadius: 10,
-    paddingLeft: 10
+    paddingTop: 2 * StatusBar.currentHeight,
+    width: metrics.screenWidth,
   },
   textBubble: {
     padding: 10,
@@ -123,7 +99,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 10,
     backgroundColor: "#FFF3F8",
-    marginRight: 45
+    marginHorizontal: 30
   },
   row: {
     flexDirection: "row",

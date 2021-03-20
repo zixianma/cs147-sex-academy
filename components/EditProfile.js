@@ -9,10 +9,6 @@ class EditProfile extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.search_container}>
-          <View style={{ flex: 6 }}>
-          </View>
-        </View>
         <Image style={styles.avatar} source={require('../assets/avatar.png')}></Image>
         <Card containerStyle={styles.card}>
 

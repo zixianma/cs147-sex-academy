@@ -89,7 +89,7 @@ class Article extends Component {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       style={styles.list}/>
-      <BottomBar />
+      <BottomBar props={this.props}/>
         </SafeAreaProvider>
       </SafeAreaView>
     );
@@ -99,8 +99,7 @@ class Article extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
-    marginHorizontal: 16
+    paddingTop: StatusBar.currentHeight
   },
   item: {
     padding: 20,

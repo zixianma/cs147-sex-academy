@@ -38,7 +38,7 @@ class BottomBar extends Component {
             selectedIndex={selectedIndex}
             buttons={buttons}
             innerBorderStyle={{color:'transparent'}}
-            selectedButtonStyle={{backgroundColor: "#FFC7DE", borderRadius: 60}}
+            selectedButtonStyle={{backgroundColor: "#FFC7DE", borderRadius: 20}}
             containerStyle={{width: this.windowWidth, height: 70, borderColor:'transparent', marginHorizontal: 0}} />
         )
       }

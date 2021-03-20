@@ -31,7 +31,7 @@ export default function Login({navigation}) {
             </View>
             <View style={styles.loginCard}>
                 <View style={{ alignItems: 'center', marginVertical:30}}>
-                    <Text style={styles.title}>LOGIN</Text>
+                    <Text style={styles.title}>Sex Academy</Text>
                 </View>
                 <View style={styles.textView}>
                     <View style={styles.textIcon}>

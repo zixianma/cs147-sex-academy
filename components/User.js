@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, View, SafeAreaView, FlatList, StatusBar, Image } from "react-native";
 import { SearchBar, Header, Card, Button, Icon, Text, withTheme } from 'react-native-elements';
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import metrics from "../Themes/Metrics";
 import BottomBar from "./BottomBar";
 import TopBar from "./TopBar";
 import UserBar from "./UserBar"
@@ -20,6 +21,9 @@ const DATA = [
 
 
 class User extends Component {
+  constructor(props){
+    super(props);
+  }
 
   render() {
 
@@ -28,7 +32,7 @@ class User extends Component {
         //   <Text style={styles.title}>{title}</Text>
         // </View>
         <View style={{flexDirection: "row"}}>
-        <Card containerStyle={{borderWidth: 0}}>
+        <Card containerStyle={{borderWidth: 2, borderColor: 'transparent', borderRadius: 10}}>
             <Card.Image style={{borderRadius: 10}} source={require('../assets/cmi.png')}>
         </Card.Image>
         <Card.Divider/>
@@ -44,7 +48,7 @@ class User extends Component {
           </View>
        
       </Card>
-      <Card containerStyle={{borderWidth: 0}}>
+      <Card containerStyle={{borderWidth: 2, borderColor: 'transparent', borderRadius: 10}}>
             <Card.Image style={{borderRadius: 10}} source={require('../assets/cmi.png')}>
         </Card.Image>
         <Card.Divider/>
@@ -70,22 +74,24 @@ class User extends Component {
     return (
       <SafeAreaView style={styles.container}>
           <SafeAreaProvider>
-        <UserHeader />
+        <UserHeader props={this.props}/>
         <UserBar />
-<FlatList
+        <View style={{height: metrics.screenHeight * 0.25}}>
+<FlatList horizontal={true}
         data={DATA}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       style={styles.list}/>
+      </View>
       <View style={styles.story_stats}>
         <Text style={{fontWeight: "bold", fontSize: 20}}>Your Story Statistics:</Text>
-        <View style={{flexDirection: 'row', marginVertical: 20, justifyContent: 'space-between'}}> 
+        <View style={{flexDirection: 'row', marginVertical: 5, justifyContent: 'space-between'}}> 
         <View style={styles.icon_view}><Icon  type='feather' name='heart' /><Text>10k likes</Text></View>
         <View style={styles.icon_view}><Icon  type='feather' name='star' /><Text>42k archives</Text></View>
         <View style={styles.icon_view}><Icon  type='feather' name='eye' /><Text>100k views</Text></View>
         </View>
       </View>
-      <BottomBar />
+      <BottomBar props={this.props} />
         </SafeAreaProvider>
       </SafeAreaView>
     );
@@ -95,8 +101,7 @@ class User extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
-    marginHorizontal: 16
+    paddingTop: StatusBar.currentHeight
   },
   item: {
     padding: 20,
@@ -118,10 +123,10 @@ const styles = StyleSheet.create({
       width: 100
   }, 
   list: {
-      margin: 20
+      marginHorizontal: 15
   },
   story_stats: {
-    marginVertical: 20,
+    marginVertical: 10,
     marginHorizontal: 30, 
     padding: 10
   }, 

@@ -4,12 +4,15 @@ import { Icon, BottomSheet, Divider, Button} from 'react-native-elements';
 import BackButton from './BackButton';
 import BottomButton from './BottomButton';
 import Metrics from '../Themes/Metrics';
+import metrics from "../Themes/Metrics";
 
-const BottomBarSC = () => {
+export default function BottomBarSC(props) {
   const [text, onChangeText] = React.useState(null);
   const [liked, onPressLike] = React.useState(false);
   const [starred, onPressStar] = React.useState(false);
   const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisibleArchived, setIsVisibleArchived] = React.useState(false);
+  const [isVisibleSent, setIsVisibleSent] = React.useState(false);
 
   const list = [
     { title: 'Share to',
@@ -38,7 +41,13 @@ const BottomBarSC = () => {
       placeholder="comment"
       keyboardType="default"
     />
-  <Icon style={{justifyContent: "flex-end"}} name='send' type='feather' color='black'/></View>
+    <Pressable onPress={() => {
+      setIsVisibleSent(true);
+      onChangeText('');
+    }}>
+  <Icon style={{justifyContent: "flex-end"}} name='send' type='feather' color='black'/>
+  </Pressable>
+  </View>
 
     
                   <View style={{flex: 2, flexDirection: "row", justifyContent: "space-around"}} >
@@ -61,7 +70,10 @@ const BottomBarSC = () => {
           
               }
             </Pressable>
-            <Pressable onPress={() => onPressStar(!starred)}>
+            <Pressable onPress={() => {
+              onPressStar(!starred);
+              setIsVisibleArchived(true);
+            }}>
               {starred?
                <View style={{flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
                <Image source={require('../assets/star-yellow.png')}/>
@@ -98,12 +110,55 @@ const BottomBarSC = () => {
                     </View>
                     </View>
                     <View style={{backgroundColor: "black"}}>
-                      <Pressable style={styles.share_btn} onPress={() => setIsVisible(false)}><View ><Text style={{color: 'white', textAlign: "center", fontSize: 20, fontWeight: 'bold'}}>Cancel</Text></View></Pressable>
+                      <Pressable style={styles.share_btn} onPress={() => setIsVisible(false)}>
+                        <View >
+                          <Text style={{color: 'white', textAlign: "center", fontSize: 20, fontWeight: 'bold'}}>Cancel</Text>
+                          </View>
+                          </Pressable>
                     {/* <Button titleStyles={styles.sharebtn} color="white" onPress={() => setIsVisible(false)} title="Cancel" ><Text>Cancel</Text></Button> */}
                     </View>
                     </View>
                     
                   </BottomSheet>
+
+                  <BottomSheet
+                isVisible={isVisibleArchived}
+                containerStyle={{ backgroundColor: 'transparent', borderRadius: 10 }}>
+                <View style={styles.archive_view}>
+                      <Pressable style={styles.archive_btn} onPress={() => setIsVisibleArchived(false)}>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                          <View></View>
+                          <Text style={{color: 'white', textAlign: "center", fontSize: 20, fontWeight: 'bold'}}>Archived!
+                          </Text>
+                          <Pressable onPress={()=>{
+                            setIsVisibleArchived(false);
+       props.props.navigation.navigate('User');}}
+        style={{flexDirection: 'row', alignItems: 'center'}}>
+                            <Text style={{color: 'white', fontSize: 20}}>View</Text>
+                            <Icon name="chevron-right" type="feather" color="white"></Icon>
+                          </Pressable>
+                          </View>
+                          </Pressable>
+                    </View>
+
+
+            </BottomSheet>
+            <BottomSheet
+                isVisible={isVisibleSent}
+                containerStyle={{ backgroundColor: 'transparent', borderRadius: 10 }}>
+                <View style={styles.send_view}>
+                      <Pressable style={styles.send_btn} onPress={() => setIsVisibleSent(false)}>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                          <View></View>
+                          <Text style={{color: 'white', textAlign: "center", fontSize: 20, fontWeight: 'bold'}}>Comment sent!
+                          </Text>
+                          <Text style={{color: 'white', textAlign: "center", fontSize: 20, fontWeight: 'bold'}}>Ok!</Text>
+                          </View>
+                          </Pressable>
+                    </View>
+
+
+            </BottomSheet>
               </View>
   );
 };
@@ -158,11 +213,37 @@ share_view: {
   borderWidth: 3,
   borderColor: 'black'
 },
-share_btn: {
+archive_view: {
+  backgroundColor: 'black',
+  fontSize: 20,
+  color: 'white',
+  marginBottom: 100,
+  marginHorizontal: 20,
+  borderRadius: 15
+},
+archive_btn: {
   backgroundColor: 'black',
   fontSize: 20,
   color: 'white',
   margin: 20,
+  borderRadius: 15,
+  width: metrics.screenWidth * .8
+},
+send_view: {
+  backgroundColor: 'black',
+  fontSize: 20,
+  color: 'white',
+  marginBottom: 100,
+  marginHorizontal: 20,
+  borderRadius: 15
+},
+send_btn: {
+  backgroundColor: 'black',
+  fontSize: 20,
+  color: 'white',
+  margin: 20,
+  borderRadius: 15,
+  width: metrics.screenWidth * .8
 },
 social_icon:{
   flex: 1,
@@ -172,4 +253,3 @@ social_icon:{
 });
 
 
-export default BottomBarSC;

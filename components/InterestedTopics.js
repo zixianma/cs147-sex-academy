@@ -17,9 +17,20 @@ import { NavigationContainer } from '@react-navigation/native';
 
 export default function InterestedTopics(props) {
 
-    var topics = ['Masturbation', 'Healthy Relationships', 'Emotion', 'Sex and Faith',
-        'Relationships and Sex', 'STD', 'Beauty Standards', 'Marriage and Sex',
-        'Assault Prevention', 'Masculinity', 'Femininity', 'Dating', 'Sex Before Marriage'];
+    var topics = [
+        'Masturbation', 
+        'Healthy Relationships', 
+        'Emotion', 
+        'Sex and Faith',
+        'Relationships and Sex', 
+        'STD', 
+        'Beauty Standards', 
+        'Marriage and Sex',
+        'Assault Prevention',
+        'Masculinity', 
+        'Femininity', 
+        'Dating', 
+        'Sex Before Marriage'];
     const list = () => {
         return topics.map((elem, i) => {
 
@@ -143,7 +154,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ccc',
         justifyContent: 'center',
-        borderRadius: Metrics.screenWidth * .6 * 0.2,
+        borderRadius: 15,
 
         backgroundColor: '#FFF3F8',
     },

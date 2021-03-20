@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { StyleSheet, View, SafeAreaView, FlatList, StatusBar, Image, Pressable } from "react-native";
 import { SearchBar, Header, Card, Button, Icon, Text, withTheme } from 'react-native-elements';
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import BottomBar from "../components/BottomBar";
-import TopBar from "../components/TopBar";
-import RecommendBar from "../components/RecommendBar";
+import BottomBar from "./BottomBar";
+import TopBar from "./TopBar";
+import RecommendBar from "./RecommendBar";
 import Metrics from "../Themes/Metrics"
 //linking
 import * as Linking from 'expo-linking';
@@ -12,6 +12,14 @@ import SingleContent from "./SingleContent";
 
 
 const DATA = [
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d73',
+    title: 'Getting this party started',
+    imageUrl: require('../assets/demo_3.png'),
+    author: 'The Dildorks',
+    likes: 2021,
+    source: "Podcast"
+  },
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     title: 'How to talk to teenagers about porn',
@@ -35,14 +43,6 @@ const DATA = [
     author: 'Ashley aka bestdressed',
     likes: 2021,
     source: "Youtube"
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d73',
-    title: 'Getting this party started',
-    imageUrl: require('../assets/demo_3.png'),
-    author: 'The Dildorks',
-    likes: 2021,
-    source: "Podcast"
   },
 ];
 
